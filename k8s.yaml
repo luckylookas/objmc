@@ -1,0 +1,87 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: mc-claim-lel
+  namespace: breakfast-manager
+spec:
+  storageClassName: local-path
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  namespace: breakfast-manager
+  name: mck8s
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: mck8s
+  template:
+    metadata:
+      namespace: breakfast-manager
+      labels:
+        service: mck8s
+    spec:
+      volumes:
+        - name: mc-volume
+          persistentVolumeClaim:
+            claimName: mc-claim-lel
+      containers:
+        - name: mck8s
+          image: itzg/minecraft-server:java8
+          ports:
+            - containerPort: 25565
+              protocol: TCP
+          volumeMounts:
+            - name: mc-volume
+              mountPath: /data
+          env:
+            - name: EULA
+              value: "TRUE"
+            - name: TYPE
+              value: "FORGE"
+            - name: VERSION
+              value: "1.16.5"
+            - name: MODS
+              value: >
+                "https://www.curseforge.com/minecraft/mc-mods/cb-multipart/download/3459903/file,
+                https://www.curseforge.com/minecraft/mc-mods/scorge/download/3276638/file,
+                https://www.curseforge.com/minecraft/mc-mods/codechicken-lib-1-8/download/3456069/file,
+                https://www.curseforge.com/minecraft/mc-mods/project-red-core/download/3407713/file,
+                https://www.curseforge.com/minecraft/mc-mods/project-red-exploration/download/3407716/file,
+                https://www.curseforge.com/minecraft/mc-mods/project-red-transmission/download/3407718/file,
+                https://www.curseforge.com/minecraft/mc-mods/project-red-integration/download/3407714/file,
+                https://www.curseforge.com/minecraft/mc-mods/project-red-illumination/download/3407715/file,
+                https://www.curseforge.com/minecraft/mc-mods/jei/download/3480853/file,
+                https://media.forgecdn.net/files/3419/412/create-mc1.16.5_v0.3.2d.jar,
+                https://www.curseforge.com/minecraft/mc-mods/tinkers-construct/download/3482903/file,
+                https://media.forgecdn.net/files/3439/180/Mantle-1.16.5-1.6.123.jar,
+                https://media.forgecdn.net/files/3459/739/flywheel-1.16-0.2.4.jar"
+            - name: ONLINE_MODE
+              value: "FALSE"
+            - name: SERVER_NAME
+              value: "GarticCircleMCServer"
+            - name: MOTD
+              value: "GarticCircleServer Penis 8===D"
+            - name: MEMORY
+              value: "3G"
+          imagePullPolicy: IfNotPresent
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: mck8s
+spec:
+  type: NodePort
+  selector:
+    service: mck8s
+  ports:
+    - protocol: TCP
+      port: 25565
+      targetPort: 25565
+      nodePort: 32222

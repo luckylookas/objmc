@@ -48,20 +48,7 @@ spec:
             - name: VERSION
               value: "1.16.5"
             - name: MODS
-              value: >
-                "https://www.curseforge.com/minecraft/mc-mods/cb-multipart/download/3459903/file,
-                https://www.curseforge.com/minecraft/mc-mods/scorge/download/3276638/file,
-                https://www.curseforge.com/minecraft/mc-mods/codechicken-lib-1-8/download/3456069/file,
-                https://www.curseforge.com/minecraft/mc-mods/project-red-core/download/3407713/file,
-                https://www.curseforge.com/minecraft/mc-mods/project-red-exploration/download/3407716/file,
-                https://www.curseforge.com/minecraft/mc-mods/project-red-transmission/download/3407718/file,
-                https://www.curseforge.com/minecraft/mc-mods/project-red-integration/download/3407714/file,
-                https://www.curseforge.com/minecraft/mc-mods/project-red-illumination/download/3407715/file,
-                https://www.curseforge.com/minecraft/mc-mods/jei/download/3480853/file,
-                https://media.forgecdn.net/files/3419/412/create-mc1.16.5_v0.3.2d.jar,
-                https://www.curseforge.com/minecraft/mc-mods/tinkers-construct/download/3482903/file,
-                https://media.forgecdn.net/files/3439/180/Mantle-1.16.5-1.6.123.jar,
-                https://media.forgecdn.net/files/3459/739/flywheel-1.16-0.2.4.jar"
+              value: "https://media.forgecdn.net/files/3459/903/CBMultipart-1.16.5-3.0.2.120-universal.jar,https://media.forgecdn.net/files/3276/638/Scorge-3.1.3.jar,https://media.forgecdn.net/files/3456/69/CodeChickenLib-1.16.5-4.0.3.434-universal.jar,https://media.forgecdn.net/files/3407/713/ProjectRed-1.16.5-4.10.0-core.jar,https://media.forgecdn.net/files/3407/716/ProjectRed-1.16.5-4.10.0-exploration.jar,https://media.forgecdn.net/files/3407/718/ProjectRed-1.16.5-4.10.0-transmission.jar,https://media.forgecdn.net/files/3407/714/ProjectRed-1.16.5-4.10.0-integration.jar,https://media.forgecdn.net/files/3407/715/ProjectRed-1.16.5-4.10.0-illumination.jar,https://media.forgecdn.net/files/3480/853/jei-1.16.5-7.7.1.122.jar,https://media.forgecdn.net/files/3419/412/create-mc1.16.5_v0.3.2d.jar,https://media.forgecdn.net/files/3482/903/TConstruct-1.16.5-3.1.3.271.jar,https://media.forgecdn.net/files/3439/180/Mantle-1.16.5-1.6.123.jar,https://media.forgecdn.net/files/3459/739/flywheel-1.16-0.2.4.jar"
             - name: ONLINE_MODE
               value: "FALSE"
             - name: SERVER_NAME
